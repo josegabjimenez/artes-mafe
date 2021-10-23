@@ -1,0 +1,85 @@
+@import './media';
+
+@mixin flex($justify, $align, $direction) {
+	display: flex;
+	justify-content: $justify;
+	align-items: $align;
+	flex-direction: $direction;
+}
+
+.App {
+	@include flex(center, center, column);
+	background-color: #7209b7;
+	min-height: 100vh;
+	width: 100%;
+	font-family: 'Fjalla One', sans-serif;
+
+	@include media('>=desktop') {
+		font-size: 1.2rem;
+	}
+}
+
+.calculator {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	grid-auto-rows: auto;
+	background-color: lightblue;
+	margin: 20px 0;
+	height: 75vh;
+	width: 50%;
+	border-radius: 5px;
+
+	@include media('<=tablet') {
+		width: 95%;
+	}
+
+	&__field {
+		@include flex(center, center, column);
+
+		&.span {
+			grid-column: -1/1;
+		}
+
+		input {
+			padding: 5px;
+			text-align: center;
+			margin: 15px 0;
+			outline: none;
+			border: none;
+			border-radius: 2px;
+			box-shadow: 1px 1px 5px -2px black;
+			font-size: 1rem;
+			font-weight: bold;
+			color: #7209b7;
+
+			&:hover {
+				box-shadow: 1px 1px 0px 1px #7209b7;
+			}
+		}
+
+		button {
+			background-color: #7209b7;
+			padding: 15px;
+			border-radius: 5px;
+			outline: none;
+			border: none;
+			color: whitesmoke;
+			cursor: pointer;
+			box-shadow: 2px 2px 0px 2px black;
+			font-weight: bold;
+
+			&:hover {
+				box-shadow: 2px 2px 0px 2px #7209b7;
+				color: #7209b7;
+				background-color: whitesmoke;
+			}
+
+			&:active {
+				transform: scale(0.9);
+				box-shadow: 4px 4px 0px 2px #7209b7;
+				color: #7209b7;
+				background-color: whitesmoke;
+			}
+		}
+	}
+}
